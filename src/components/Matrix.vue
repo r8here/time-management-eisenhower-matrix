@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <div class="h-100">
                         <ul class="list-group list-group-flush p-0">
-                            <li class="list-group-item mb-1 bg-dark p-1" v-for="todo in todos">
+                            <li class="list-group-item mb-1 bg-dark p-1" :bind="todo in todos">
                                 <div v-show="todo.edit == false">
                                     <label class="w-100 m-0" @dblclick="todo.edit = true"> {{todo.title}} </label>
                                 </div>
@@ -24,7 +24,7 @@
                 <div class="card-body">
                     <div class="h-100">
                         <ul class="list-group list-group-flush p-0">
-                            <li class="list-group-item mb-1 bg-dark p-1" v-for="todo in todos">
+                            <li class="list-group-item mb-1 bg-dark p-1" :bind="todo in todos">
                                 <div v-show="todo.edit == false">
                                     <label class="w-100 m-0" @dblclick="todo.edit = true"> {{todo.title}} </label>
                                 </div>
@@ -43,7 +43,7 @@
                 <div class="card-body">
                     <div class="h-100">
                         <ul class="list-group list-group-flush p-0">
-                            <li class="list-group-item mb-1 bg-dark p-1" v-for="todo in todos">
+                            <li class="list-group-item mb-1 bg-dark p-1" :bind="todo in todos">
                                 <div v-show="todo.edit == false">
                                     <label class="w-100 m-0" @dblclick="todo.edit = true"> {{todo.title}} </label>
                                 </div>
@@ -60,7 +60,7 @@
                 <div class="card-body">
                     <div class="h-100">
                         <ul class="list-group list-group-flush p-0">
-                            <li class="list-group-item mb-1 bg-dark p-1" v-for="todo in todos">
+                            <li class="list-group-item mb-1 bg-dark p-1" :bind="todo in todos">
                                 <div v-show="todo.edit == false">
                                     <label class="w-100 m-0" @dblclick="todo.edit = true"> {{todo.title}} </label>
                                 </div>
@@ -84,13 +84,19 @@ export default {
     todos:[{'title':'one value','edit':false},
           {'title':'one value','edit':false},
           {'title':'otro titulo','edit':false}],
-    };
+    }
   },
-  // methods: {
-	// 	editTodo: function(todo) {
-	// 	  this.editedTodo = todo;
-	// 	},
-  // }
+  methods: {
+        todo: function (edit) {
+        // `this` inside methods point to the Vue instance
+        alert(this.edit)
+    }
+  },
+  watch:{
+      todo: function(todo){
+        console.log(this.todo);
+      }
+  }
 }
 </script>
 
