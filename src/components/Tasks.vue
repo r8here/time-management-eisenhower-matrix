@@ -3,7 +3,7 @@
     <div class="card-header">{{ taskTitle }}</div>
     <div class="card-body">
         <div class="h-100">
-                <ul class="list-group list-group-flush p-0">
+            <ul class="list-group list-group-flush p-0">
                 <li class="list-group-item mb-1 bg-transparent p-1">
                     <input class="rounded-0 form-control form-control-sm" @keyup.enter="addTask" type="text" v-model="newTask" placeholder="Add Task">
                 </li>
