@@ -7,9 +7,13 @@
                 <div class="card-body">
                     <div class="h-100">
                          <ul class="list-group list-group-flush p-0">
-                            <li class="list-group-item mb-1 bg-dark p-1" v-for="tasks in tasks">
-                               <label class="mb-0" v-if="editTask = editTask" > {{tasks.title}}</label>
-                               <input type="text" v-model="task" @dblclick="editTask">
+                            <li class="list-group-item mb-1 bg-dark p-1" v-for="task in tasks">
+                               <div v-if="task.edit == false">
+                                <label @dblclick="task.edit = true" class="mb-0">
+                                    {{ task.title }}
+                                </label>
+                               </div>
+                                <input @keyup.enter="addTask" type="text" v-model="newTask" v-if="task.edit == true" placeholder="edit" value="">
                             </li>
                         </ul>
                     </div>
@@ -68,19 +72,26 @@
 <script>
 export default {
   name: 'Matrix',
-  data(){
-  return {
-    tasks:[{'title':'one value','edit':false}]
-    },
-
-  },
+  props: ['todos'],
+   data(){
+       return{
+           tasks: [{'title': 'some task', 'edit': false}],
+           newTask: '',
+           editTask: null
+       }
+   },
   methods: {
-    editTask: function (edit) {
-        alert('editTask');
+    addTask: function(){
+        this.tasks.push({
+            taskItem: this.newTask
+        })
+        this.newTask = '';
+        // completed: false,
     },
-    // edit:function () {
-    //     alert(0)
-    // }
+    editTask: function(task){
+        this.editTask = task;
+        // console.log(task);
+    }
   },
   watch:{
       todo: function(todo){
@@ -92,18 +103,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+input{
+    width: 100%;
+    background: #3dca54;
+    border: 0;
 }
 </style>
