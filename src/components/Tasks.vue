@@ -1,6 +1,6 @@
 <template>
 <div class="card text-white mb-3" :class='backgroundClass'>
-    <div class="card-header">{{ taskTitle }}</div>
+    <div class="card-header">{{ taskTitle }} <span class='label label-info'>(No of tasks {{ tasks.length }})</span> <span class='label label-info'>(No of pending tasks {{ pendingCount }})</span></div>
     <div class="card-body">
         <div class="h-100">
             <ul class="list-group list-group-flush p-0">
@@ -10,11 +10,15 @@
                 <li class="list-group-item mb-1 bg-transparent p-0" v-for="(task, index) in tasks" :key='index'>
                     <div v-if="task.edit == false">
                     <label @dblclick="task.edit = true" class="mb-0 p-1">
-                        {{ task.taskItem }}
+                        {{ task.status ? 'Done' : '' }} {{ task.taskItem }}
                     </label>
-                    <span class="float-right mr-2" @click="tasks.splice(index, 1)">x</span>
+                    <div class="action float-right">
+                        <button type='button' class="btn-sm btn btn-info mr-2" @click="task.status = !task.status">{{ task.status ? 'Mark as not done' : 'Mark as done' }}</button>
+
+                        <button class="btn-sm btn btn-danger mr-2" @click="tasks.splice(index, 1)">X</button>
                     </div>
-                    <input class="rounded-0 form-control form-control-sm" v-else type="text" v-model="task.taskItem" placeholder="Edit Task" @focusout="task.edit = false">
+                    </div>
+                    <input class="rounded-0 form-control form-control-sm" v-else type="text" v-model="task.taskItem" placeholder="Edit Task" @focusout="task.edit = false" @keyup.enter="task.edit = false">
                 </li>
             </ul>
         </div>
@@ -42,8 +46,22 @@ export default {
         }
     },
     watch: {
-        tasks() {
-            localStorage.setItem(this.groupName, JSON.stringify({ tasks: this.tasks }));
+        tasks: {
+            handler() {
+                localStorage.setItem(this.groupName, JSON.stringify({ tasks: this.tasks }));
+            },
+            deep: true
+        }
+    },
+    computed: {
+        pendingCount() {
+            var count = 0;
+            this.tasks.forEach(function(task) {
+                if(!task.status) {
+                    count++;
+                }
+            });
+            return count;
         }
     },
     methods: {
@@ -51,7 +69,8 @@ export default {
             if(this.newTask !== '') {
                 this.tasks.push({
                     taskItem: this.newTask,
-                    edit: false
+                    edit: false,
+                    status: false
                 })
                 this.newTask = '';
             }
