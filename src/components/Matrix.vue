@@ -2,16 +2,16 @@
   <div class="container my-5">
     <div class="row">
         <div class="col-sm-12 col-md-6">
-            <Tasks taskTitle='Do first' backgroundClass='bg-success'/>
+            <tasks taskTitle='Do first' group-name='doFirst' background-class='bg-success'/>
         </div>
         <div class="col-sm-12 col-md-6">
-            <Tasks taskTitle='Schedule' backgroundClass='bg-primary'/>
+            <tasks taskTitle='Schedule' group-name='schedule' background-class='bg-primary'/>
         </div>
         <div class="col-sm-12 col-md-6">
-            <Tasks taskTitle='Delegate' backgroundClass='bg-warning'/>
+            <tasks taskTitle='Delegate' group-name='delegate' background-class='bg-warning'/>
         </div>
         <div class="col-sm-12 col-md-6">
-            <Tasks taskTitle='Trivial' backgroundClass='bg-danger'/>
+            <tasks taskTitle='Trivial' group-name='trivial' background-class='bg-danger'/>
         </div>
     </div>
   </div>
