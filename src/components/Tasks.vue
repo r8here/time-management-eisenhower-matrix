@@ -1,21 +1,25 @@
 <template>
-<div class="card text-white mb-3" :class='backgroundClass'>
-    <div class="card-header">{{ taskTitle }} <span class='label label-info'>(No of tasks {{ tasks.length }})</span> <span class='label label-info'>(No of pending tasks {{ pendingCount }})</span></div>
+<div class="card mb-3" :class="[backgroundClass, textColorClass]">
+    <div class="card-header">{{ taskTitle }}
+        <div class="float-right">
+            Total tasks <span class="badge badge-light">{{ tasks.length }}</span> Pending tasks <span class="badge badge-light">{{ pendingCount }}</span>
+        </div>
+    </div>
     <div class="card-body">
         <div class="h-100">
             <ul class="list-group list-group-flush p-0">
                 <li class="list-group-item mb-1 bg-white p-1">
                     <input class="rounded-0 form-control form-control-sm" @keyup.enter="addTask" type="text" v-model="newTask" placeholder="Add Task">
                 </li>
-                <li class="list-group-item mb-1 bg-transparent p-0" v-for="(task, index) in tasks" :key='index'>
+                <li class="list-group-item task mb-1 bg-transparent p-0" v-for="(task, index) in tasks" :key='index'>
                     <div v-if="task.edit == false">
-                    <label @dblclick="task.edit = true" class="mb-0 p-1">
-                        {{ task.status ? 'Done' : '' }} {{ task.taskItem }}
+                    <label @dblclick="task.edit = true" class="mb-0 p-1" :class="{ 'done': task.status }">
+                        <input type="checkbox" aria-label="Checkbox for following text input" @click="task.status = !task.status" :checked="task.status"> {{ task.taskItem }}
                     </label>
                     <div class="action float-right">
-                        <button type='button' class="btn-sm btn btn-info mr-2" @click="task.status = !task.status">{{ task.status ? 'Mark as not done' : 'Mark as done' }}</button>
+                        <!-- <button type='button' class="btn badge badge-dark mr-2" @click="task.status = !task.status">{{ task.status ? 'Mark as not done' : 'Mark as done' }}</button> -->
 
-                        <button class="btn-sm btn btn-danger mr-2" @click="tasks.splice(index, 1)">X</button>
+                        <button type="button" class="btn badge badge-danger mr-2" @click="tasks.splice(index, 1)">X</button>
                     </div>
                     </div>
                     <input class="rounded-0 form-control form-control-sm" v-else type="text" v-model="task.taskItem" placeholder="Edit Task" @focusout="task.edit = false" @keyup.enter="task.edit = false">
@@ -32,7 +36,8 @@ export default {
     props: {
         'taskTitle': String,
         'backgroundClass': String,
-        'groupName': { required: true }
+        'groupName': { required: true },
+        'textColorClass': { default: 'text-dark' }
     },
     data(){
         return{
@@ -82,15 +87,25 @@ export default {
 <style scoped>
 input,
 .list-group-item > div{
-    background: #ffffff4f;
     border: 0;
 }
+
+.task.list-group-item div{
+    background: #00000045;
+}
+
 .card-body{
     max-height: 250px;
     overflow: hidden;
     overflow-y: auto;
 }
-/*  */
+.done {
+    text-decoration: line-through;
+}
+
+.bg-warning label {
+    color: #fff !important
+}
 </style>
 
 
