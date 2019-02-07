@@ -3,9 +3,9 @@
 > Time management is the process of planning and exercising conscious control of time spent on specific activities, especially to increase effectiveness, efficiency, and productivity.  [Wikipedia](https://en.wikipedia.org/wiki/Time_management#The_Eisenhower_Method)
 
 ## About the application
-A tiny **Vue.js** app to manage time built on the basis of Eisenhower matrix.
+A tiny **Vue.js** app to manage time and increase productivity, built on the basis of Eisenhower matrix.
 
-The application stores all the tasks in browser's local storage and access data in the browser with no expiration date. The data can be accessed even if the browser window has been closed.
+The application stores all the tasks in browser's local storage and access data in the browser. The data stored in local storage is always available with no expiration date even if the browser window has been closed and can be accessed next time when the browser is open.
 
 ## Usage
 Type and enter to create new tasks.
