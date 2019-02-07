@@ -7,7 +7,7 @@ A tiny **Vue.js** app to manage time built on the basis of Eisenhower matrix.
 
 ## Screenshots
 
-![Time Management Eisenhower Matrix](https://raw.githubusercontent.com/r8here/time-management-eisenhower-matrix/8fbcf60f173f41aa8944c7d41b2e8d0b771de07a/screenshot.png)
+![Time Management Eisenhower Matrix](https://raw.githubusercontent.com/r8here/time-management-eisenhower-matrix/master/screenshot.png)
 
 ## Built With
 
