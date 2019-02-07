@@ -18,6 +18,8 @@ A tiny **Vue.js** app to manage time built on the basis of Eisenhower matrix.
 
 - Download or clone the repo
 - Run `npm install`
+- run `npm run serve`
+
 
 
 ## Authors
