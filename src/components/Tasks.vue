@@ -19,7 +19,7 @@
                     <div class="action float-right">
                         <!-- <button type='button' class="btn badge badge-dark mr-2" @click="task.status = !task.status">{{ task.status ? 'Mark as not done' : 'Mark as done' }}</button> -->
 
-                        <button type="button" class="btn badge badge-danger mr-2" @click="tasks.splice(index, 1)">X</button>
+                        <button type="button" class="btn badge badge-danger mr-2" @click="removeTask(index)">X</button>
                     </div>
                     </div>
                     <input class="rounded-0 form-control form-control-sm" v-else type="text" v-model="task.taskItem" placeholder="Edit Task" @focusout="task.edit = false" @keyup.enter="task.edit = false">
@@ -78,6 +78,11 @@ export default {
                     status: false
                 })
                 this.newTask = '';
+            }
+        },
+        removeTask: function(index){
+            if(confirm('Remove task?')) {
+                this.tasks.splice(index, 1)
             }
         }
     }
