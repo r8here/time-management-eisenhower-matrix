@@ -1,20 +1,18 @@
 <template>
-  <div id="app">
-    <div class="container">
+  <div id="app" class="">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-4">
           <div class="app-title text-muted">
             <div class="app-title-container">
               <h1 class="display-4 mt-2">
                 Eisenhower Matrix
-                <small>Tool By: CodeRomeos</small>
               </h1>
+              <p class="font-weight-bold">be super productive.</p>
             </div>
-            <p class="font-weight-bold">be more productive.</p>
           </div>
-          <hr />
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-8">
           <p class="mt-3">
             Based on
             <strong>
@@ -25,6 +23,9 @@
           </p>
         </div>
       </div>
+    </div>
+    <div class="app-by">
+      <a href="//coderomeos.com" class="text-white badge badge-gradient">Tool By: CodeRomeos</a>
     </div>
     <Matrix />
   </div>
@@ -50,24 +51,30 @@ export default {
     color: #2c3e50;
     margin-top: 60px; */
 }
-.app-title-container {
-  position: relative;
-  max-width: 27rem;
+
+.app-title h1 { font-size: 2.5rem }
+
+.app-by{
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #000;
+  line-height: 0.1em;
+  margin: 0 0 2.5rem;
+  height: 10px;
 }
-.app-title small {
-  display: block;
-  font-size: 0.7rem;
-  font-weight: bold;
-  position: absolute;
-  right: 0.25rem;
-  top: 4rem;
+.app-by a {
+  background-color: #d4418e;
+  background-image: linear-gradient(315deg, #d4418e 0%, #0652c5 74%);
+  padding: .2rem .4rem .3rem;
 }
 @media (max-width: 575.98px) {
   .app-title h1 {
-    font-size: 30px;
-    font-weight: bold;
+    font-size: 1.8rem;
     line-height: 1;
     margin-top: 20px;
+  }
+  .app-title-container {
+    text-align: center
   }
 }
 </style>
