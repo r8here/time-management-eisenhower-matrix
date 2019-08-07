@@ -1,5 +1,5 @@
 <template>
-  <div class="container my-5">
+  <div class="container mt-3 mb-5">
     <div class="row">
         <div class="col-sm-12 col-md-6">
             <tasks taskTitle='Do first' group-name='doFirst' background-class='bg-success' text-color-class='text-white'/>
