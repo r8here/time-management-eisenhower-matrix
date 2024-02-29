@@ -32,7 +32,7 @@
 
 <script>
 export default {
-    name: 'Tasks',
+    name: 'TaskList',
     props: {
         'taskTitle': String,
         'backgroundClass': String,
