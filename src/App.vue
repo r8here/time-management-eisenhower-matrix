@@ -1,5 +1,7 @@
 <template>
   <div id="app" class="">
+   
+    <EisenhourMatrix />
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-4">
@@ -27,17 +29,16 @@
     <div class="app-by">
       <a href="//coderomeos.com" class="text-white badge badge-gradient">Tool By: CodeRomeos</a>
     </div>
-    <Matrix />
   </div>
 </template>
 
 <script>
-import Matrix from "./components/Matrix.vue";
+import EisenhourMatrix from "./components/Matrix.vue";
 
 export default {
   name: "app",
   components: {
-    Matrix
+    EisenhourMatrix
   }
 };
 </script>

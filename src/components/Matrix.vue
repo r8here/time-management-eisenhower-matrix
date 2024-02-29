@@ -1,6 +1,9 @@
 <template>
+    
   <div class="container mt-3 mb-5">
+    
     <div class="row">
+        <Tasklist />
         <div class="col-sm-12 col-md-6">
             <tasks taskTitle='Do first' group-name='doFirst' background-class='bg-success' text-color-class='text-white'/>
         </div>
@@ -20,9 +23,9 @@
 <script>
 import Tasks from './Tasks'
 export default {
-    name: 'Matrix',
+    name: 'EisenhourMatrix',
     components: {
-        Tasks
+       Tasks
     }
 }
 </script>
